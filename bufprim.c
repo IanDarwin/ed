@@ -8,20 +8,25 @@
 #include "editdefs.h"
 
 /* initbuf - initialise for new file */
+int
 initbuf()
 {
 	/* nothing to do */
+	return 0;
 }
 
 /* gettext (in-memory version) */
+char *
 gettxt(n, s)
 int n;
 char *s;
 {
 	strcpy(s, buf[n].txt);
+	return s;	/* not used yet */
 }
 
 /* blkmove -- move block of lines n1..n2 to after n3 */
+void
 blkmove(n1, n2, n3)
 int	n1, n2, n3;
 {
@@ -37,6 +42,7 @@ int	n1, n2, n3;
 }
 
 /* reverse - reverse buf[n1].txt..buf[n2.txt */
+void
 reverse(n1, n2)
 int	n1, n2;
 {
@@ -56,6 +62,7 @@ int	n1, n2;
 }
 
 /* edsetbuf (in-memory) -- init line storage buffer */
+void
 edsetbuf()
 {
 	buf[0].txt[0] = '\0';
@@ -63,6 +70,7 @@ edsetbuf()
 }
 
 /* puttxt - put text from lin after curln */
+int
 puttxt(line)
 char *line;
 {
@@ -78,12 +86,14 @@ char *line;
 }
 
 /* putmark, getmark -- maintain markers for global commands */
+void
 putmark(l, m)
 int l, m;
 {
 	buf[l].mark = m;
 }
 
+int
 getmark(l)
 int l;
 {
