@@ -27,3 +27,5 @@ struct buftype {
 	char	txt[MAXSTR];	/* MAKE THIS: char *txt; */
 	int	mark;
 };
+
+void putmark(int l, int m);

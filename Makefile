@@ -31,15 +31,15 @@ clean:
 
 main.o : main.c /usr/include/stdio.h \
   /usr/include/stdarg.h \
-  /usr/include/sys/feature_tests.h /usr/include/signal.h \
+  /usr/include/signal.h \
   /usr/include/sys/signal.h \
   /usr/include/sys/unistd.h /usr/include/setjmp.h \
   edit.h editvars.h 
 makepat.o : makepat.c /usr/include/stdio.h \
   /usr/include/stdarg.h \
-  /usr/include/sys/feature_tests.h /usr/include/ctype.h edit.h findcons.h 
+  /usr/include/ctype.h edit.h findcons.h 
 match.o : match.c /usr/include/stdio.h \
   /usr/include/stdarg.h \
-  /usr/include/sys/feature_tests.h edit.h findcons.h 
+  edit.h findcons.h 
 
 # IF YOU PUT ANYTHING HERE IT WILL GO AWAY

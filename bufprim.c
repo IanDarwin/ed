@@ -7,6 +7,8 @@
 #include "edit.h"
 #include "editdefs.h"
 
+static void reverse(int n1, int n2);
+
 /* initbuf - initialise for new file */
 int
 initbuf()
@@ -42,7 +44,7 @@ int	n1, n2, n3;
 }
 
 /* reverse - reverse buf[n1].txt..buf[n2.txt */
-void
+static void
 reverse(n1, n2)
 int	n1, n2;
 {
