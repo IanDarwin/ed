@@ -1,3 +1,4 @@
+/* fgets_nonl - fgets but chops the newline */
 /* dowrite -- write lines n1 through n2 to file */
 /* doread -- read file fn after line n1 */
 
@@ -6,6 +7,23 @@
 #include "edit.h"
 #include "editdefs.h"
 
+char *
+fgets_nonl(s, n, f)
+char *s;
+int n;
+FILE *f;
+{
+	char *t = fgets(s, n, f);
+
+	if (t) {
+		int l = strlen(s);
+		if (l)
+			s[l-1] = '\0';
+	}
+	return t;
+}
+
+int
 dowrite(n1, n2, fn)
 int n1, n2;
 char *fn;
@@ -53,15 +71,13 @@ char *fn;
 		status = error("open of %s for read failed", fn);
 	else {
 		curln = n1;
-		while (fgets(line, sizeof line -1, f) != NULL) {
+		while (fgets_nonl(line, sizeof line -1, f) != NULL) {
 			if (ferror(f)) {
 				status = error("Read error on %s", fn);
 				break;
 			}
-			i = strlen(line);
-			nch += i; nli++;
-			if (i)
-				line[i-1] = '\0';	/* chop \n */
+			nch += strlen(line)+1;
+			nli++;
 			puttxt(line);
 		}
 		fclose(f);
