@@ -6,9 +6,11 @@
 
 extern int errno;
 
+static int locate(char c, char *patt, int offset);
+
 /* match -- find pattern match anywhere on line */
-match(line, patt)
-char	*line, *patt;
+int
+match(char *line, char *patt)
 {
 	int	i = 0, j = 0;
 
@@ -20,9 +22,8 @@ char	*line, *patt;
 }
 
 /* amatch - look for match of patt[j]... at lin[offset]... */
-amatch(line, offset, patt, j)
-int	offset, j;
-char	*line, *patt;
+int
+amatch(char *line, int offset, char *patt, int j)
 {
 	int done = FALSE, i, k;
 
@@ -60,9 +61,7 @@ char	*line, *patt;
 }
 
 /* patsize -- return size of pattern entry at patt[n] */
-patsize(patt, n)
-char *patt;
-int n;
+patsize(char *patt, int n)
 {
 	switch(patt[n]) {
 	case LITCHAR:
@@ -83,11 +82,7 @@ int n;
 }
 
 /* omatch -- match one pattern element at patt[j], return boolean */
-omatch(line, i, patt, j)
-char *line;
-int *i;
-char *patt;
-int j;
+omatch(char *line, int *i, char *patt, int j)
 {
 	int advance = -1;
 
@@ -131,10 +126,8 @@ int j;
 }
 
 /* locate -- look for c in character class at patt[offset] */
-locate(c, patt, offset)
-char c;
-char *patt;
-int offset;
+static int
+locate(char c, char *patt, int offset)
 {
 	int i, status = FALSE;
 

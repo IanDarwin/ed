@@ -8,10 +8,7 @@
 #include "editdefs.h"
 
 char *
-fgets_nonl(s, n, f)
-char *s;
-int n;
-FILE *f;
+fgets_nonl(char *s, int n, FILE *f)
 {
 	char *t = fgets(s, n, f);
 
@@ -24,9 +21,7 @@ FILE *f;
 }
 
 int
-dowrite(n1, n2, fn)
-int n1, n2;
-char *fn;
+dowrite(int n1, int n2, char *fn)
 {
 	FILE *f;
 	int i, status = OK;
@@ -56,9 +51,7 @@ char *fn;
 }
 
 int
-doread(n1, fn)
-int n1;
-char *fn;
+doread(int n1, char *fn)
 {
 	FILE *f;
 	int status = OK;

@@ -5,9 +5,7 @@
 #include "editdefs.h"
 
 /* optpat -- get optional pattern from line[i], incr i */
-optpat(l, i)
-char	*l;
-int	*i;
+optpat(char *l, int *i)
 {
 	if (l[*i] == '\0')
 		*i = 0;
@@ -27,9 +25,7 @@ int	*i;
 }
 
 /* patscan -- find next occurrence of pattern after line n */
-patscan(way, n)
-char	way;
-int	*n;
+patscan(char way, int *n)
 {
 	int	done, status;
 	char	line[MAXSTR];

@@ -8,10 +8,7 @@
 #include "editdefs.h"
 
 /* addstr -- put c into outset[j] if it fits, increment j */
-addstr(c, outset, j, maxset)
-char	c, *outset;
-int	*j;
-int	maxset;
+addstr(char c, char *outset, int *j, int maxset)
 {
 	if (*j > maxset)
 		return FALSE;
@@ -21,9 +18,7 @@ int	maxset;
 }
 
 /* ckglob - if global prefix, mark lines to be affected */
-ckglob(l, i)
-char	*l;
-int	*i;
+ckglob(char *l, int *i)
 {
 	int n, gflag;
 	char temp[BUFSIZ];
@@ -53,8 +48,7 @@ int	*i;
 }
 
 /* deflt -- set defaulted line numbers */
-deflt(def1, def2)
-int	def1, def2;
+deflt(int def1, int def2)
 {
 	if (nlines == 0) {
 		line1 = def1;
@@ -67,9 +61,8 @@ int	def1, def2;
 }
 
 /* doglob - do command at s[i] on all marked lines */
-doglob(s, i, cursave)
-char	*s;
-int	*i, *cursave;
+int
+doglob(char *s, int *i, int *cursave)
 {
 	int count = 0, istart = *i, n = line1, status = OK;
 	/* count is to prevent wraparound while looking for marked lines */
@@ -93,8 +86,8 @@ int	*i, *cursave;
 }
 
 /* edit -- edit one file */
-edit(filename)
-char	*filename;
+int
+edit(char *filename)
 {
 	int status;
 
@@ -112,8 +105,7 @@ char	*filename;
 }
 
 /* error -- build comprehensive error message, print if non-interactive */
-error(s1, s2)
-char	*s1, *s2;
+error(char *s1, char *s2)
 {
 	extern int errno, sys_nerr;
 	extern char *sys_errlist[], *progname;
@@ -139,9 +131,29 @@ char	*s1, *s2;
 	return ERR;
 }
 
+/* esc - handle C-like escapes
+ * if a[i] is \, following char may be special.
+ * updates i if so.
+ * in any case, returns the character.
+ * Will NOT work for multi-byte characters!
+ */
+char
+esc(char *a, int *i)
+{
+	if (a[*i] != '\\')
+		return a[*i];
+	if (a[*i+1] == '\0')
+		return '\\';	/* not special at end */
+	*i++;
+	if (a[*i] == 'n')
+		return '\n';
+	if (a[*i] == 't')
+		return '\t';
+	return a[*i];
+}
+
 /* nextln -- get line after n */
-nextln(n)
-int	n;
+nextln(int n)
 {
 	if (n >= lastln)
 		return 1;	/* allow wraparound */
@@ -150,8 +162,7 @@ int	n;
 }
 
 /* prevln -- get line before n */
-prevln(n)
-int	n;
+prevln(int n)
 {
 	if (n <= 1)		/* ditto */
 		return lastln;

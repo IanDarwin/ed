@@ -11,7 +11,7 @@ static void reverse(int n1, int n2);
 
 /* initbuf - initialise for new file */
 int
-initbuf()
+initbuf(void)
 {
 	/* nothing to do */
 	return 0;
@@ -19,9 +19,7 @@ initbuf()
 
 /* gettext (in-memory version) */
 char *
-gettxt(n, s)
-int n;
-char *s;
+gettxt(int n, char *s)
 {
 	strcpy(s, buf[n].txt);
 	return s;	/* not used yet */
@@ -29,8 +27,7 @@ char *s;
 
 /* blkmove -- move block of lines n1..n2 to after n3 */
 void
-blkmove(n1, n2, n3)
-int	n1, n2, n3;
+blkmove(int n1, int n2, int n3)
 {
 	if (n3 < n1-1) {
 		reverse(n3+1, n1-1);
@@ -45,8 +42,7 @@ int	n1, n2, n3;
 
 /* reverse - reverse buf[n1].txt..buf[n2.txt */
 static void
-reverse(n1, n2)
-int	n1, n2;
+reverse(int n1, int n2)
 {
 	int	tmrk;
 	char	temp[MAXSTR];	/* MAKE THIS: char *temp; */
@@ -65,7 +61,7 @@ int	n1, n2;
 
 /* edsetbuf (in-memory) -- init line storage buffer */
 void
-edsetbuf()
+edsetbuf(void)
 {
 	buf[0].txt[0] = '\0';
 	curln = lastln = 0;
@@ -73,8 +69,7 @@ edsetbuf()
 
 /* puttxt - put text from lin after curln */
 int
-puttxt(line)
-char *line;
+puttxt(char *line)
 {
 	if (lastln < MAXLINES) {
 		lastln++;
@@ -89,15 +84,13 @@ char *line;
 
 /* putmark, getmark -- maintain markers for global commands */
 void
-putmark(l, m)
-int l, m;
+putmark(int l, int m)
 {
 	buf[l].mark = m;
 }
 
 int
-getmark(l)
-int l;
+getmark(int l)
 {
 	return buf[l].mark;
 }

@@ -28,6 +28,22 @@ struct buftype {
 	int	mark;
 };
 
-char	*gettxt(int n, char *s);
-void	putmark(int l, int m);
-int		subst(char *sub, int gflag, int glob);
+int amatch(char *line, int offset, char *patt, int j);
+int append(int line, int glob);
+void blkmove(int n1, int n2, int n3);
+int doglob(char *s, int *i, int *cursave);
+int dolist(int n1, int n2);
+int doprint(int n1, int n2);
+int edit(char *filename);
+void edsetbuf(void);
+char esc(char *a, int *i);
+char *gettxt(int n, char *s);
+int getlist(char *line, int *i);
+int getmark(int l);
+int initbuf(void);
+int lndelete(int n1, int n2);
+int match(char *line, char *patt);
+int move(int line3);
+void putmark(int l, int m);
+int puttxt(char *line);
+int subst(char *sub, int gflag, int glob);

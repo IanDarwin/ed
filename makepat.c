@@ -6,11 +6,7 @@
 #include "findcons.h"
 
 /* return ERR or index of closing delimiter */
-makepat(arg, start, delim, patt)
-char	*arg;
-int	start;
-char	delim;
-char	*patt;
+makepat(char *arg, int start, char delim, char *patt)
 {
 	int	i = start, j = 0, lastj = 0, lj = 0, done = FALSE;
 
@@ -50,10 +46,7 @@ char	*patt;
 /* getccl -- expand char class at arg[i] into pat[j] */
 /* return TRUE if pattern OK, FALSE if a problem. */
 int
-getccl(arg, i, patt, j)
-char *arg;
-int *i, *j;
-char *patt;
+getccl(char *arg, int *i, char *patt, int *j)
 {
 	int jstart;
 
@@ -71,9 +64,7 @@ char *patt;
 }
 
 /* stclose -- store closure into array at patt[j] */
-stclose(patt, j, lastj)
-char	*patt;
-int	*j, lastj;
+stclose(char *patt, int *j, int lastj)
 {
 	int jp, jt;
 
@@ -86,9 +77,7 @@ int	*j, lastj;
 }
 
 /* dodash - expand dash shorthand set at scr[i] into dest[j], stop at dlm */
-dodash(dlm, src, i, dest, j, maxset)
-char dlm, *src, *dest;
-int *i, *j, maxset;
+dodash(char dlm, char *src, int *i, char *dest, int *j, int maxset)
 {
 	int k;
 

@@ -9,9 +9,10 @@
 #include "edit.h"
 #include "editdefs.h"
 
-getlist(line, i)
-char	*line;
-int	*i;
+static int getone(char *line, int *i, int *num);
+
+int
+getlist(char *line, int *i)
 {
 	int	done, num;
 
@@ -44,9 +45,8 @@ int	*i;
 
 /* getone -- get one line number from line */
 /* pass back value in `num'; return status */
-getone(line, i, num)
-char	*line;
-int	*i, *num;
+static int
+getone(char *line, int *i, int *num)
 {
 	int	istart, mul, pnum;
 	int	status;
@@ -85,9 +85,7 @@ int	*i, *num;
  * Used only by getnum!
  */
 static int
-ctoi(in,i)
-char *in;
-int *i;
+ctoi(char *in, int *i)
 {
 	static char digits[] = "0123456789";
 	int ret;
@@ -108,9 +106,7 @@ int *i;
  * getnum -- get single line number.
  * pass back value in `num', return status
  */
-getnum(line, i, num)
-char	*line;
-int	*i, *num;
+getnum(char *line, int *i, int *num)
 {
 	int	status = OK;
 

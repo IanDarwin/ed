@@ -8,9 +8,11 @@
 #include "edit.h"
 #include "editdefs.h"
 
+static void putlist(char *s);
+
 /* append -- append lines after `line' */
-append(line, glob)
-int	line, glob;
+int
+append(int line, int glob)
 {
 	char	inpline[MAXSTR];
 	int	stat, done;
@@ -32,8 +34,8 @@ int	line, glob;
 }
 
 /* doprint -- print lines n1 through n2 */
-doprint(n1, n2)
-int n1, n2;
+int
+doprint(int n1, int n2)
 {
 	int i;
 	char line[MAXSTR];
@@ -51,8 +53,8 @@ int n1, n2;
 
 /* dolist -- print lines n1 through n2 with decoding */
 /* keep logic similar to doprint! */
-dolist(n1, n2)
-int n1, n2;
+int
+dolist(int n1, int n2)
 {
 	int i;
 	char line[MAXSTR];
@@ -69,15 +71,15 @@ int n1, n2;
 	return OK;
 }
 
-putlist(s)
-char	*s;
+static void
+putlist(char *s)
 {
 	char c;
 
-	while ((c = (*s++)) != '\0')
+	while ((c = (*s++)) != '\0') {
 		if (isascii(c) && isprint(c))
 			putchar(c);
-		else
+		else {
 			switch (c) {
 			case '\t':
 				printf("\\t");
@@ -88,11 +90,13 @@ char	*s;
 			default:
 				printf("\\%03.3o", c);
 			}
+		}
+	}
 }
 
 /* move -- move line1 .. line2 after line3 */
-move(line3)
-int	line3;
+int
+move(int line3)
 {
 	if (line1 <= 0 || line3 >= line1 && line3 < line2)
 		return ERR;
@@ -105,8 +109,8 @@ int	line3;
 }
 
 /* lndelete -- delete lines n1 through n2 */
-lndelete(n1, n2)
-int	n1, n2;
+int
+lndelete(int n1, int n2)
 {
 	int i;
 

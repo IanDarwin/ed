@@ -4,21 +4,32 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <signal.h>
 #include <setjmp.h>
 #include "edit.h"
 #include "editvars.h"
 
-jmp_buf jumper;
+static jmp_buf jumper;
 
-main(argc, argv)
-int	argc;
-char	**argv;
+void
+onintr(int signal)
 {
-	char	*edps, *getenv();
+	(void) signal(SIGINT, onintr);	/* reset for next time */
+	strcpy(errmsg, "Interrupt");
+	printf("\n?\n");
+	longjmp(jumper, 1);		/* return to loop */
+}
+
+static void usage(void);
+
+int
+main(int argc, char **argv)
+{
+	char	*edps, *getenv(const char *);
 	int	c, cursave, more, status;
 	extern int optind;
-	void	onintr(), usage();
 
 	progname = argv[0];
 	initbuf();
@@ -55,12 +66,13 @@ char	**argv;
 	while (more) {
 		linptr = 0;
 		cursave = curln;
-		if ((status = getlist(lin, &linptr)) != ERR)
+		if ((status = getlist(lin, &linptr)) != ERR) {
 			if (ckglob(lin, &linptr) == OK)
 				status = doglob(lin, &linptr, &cursave);
 			else
 				status = docmd(lin, &linptr, FALSE);
 		/* else error, do nothing */
+		}
 		if (status == ERR) {
 			printf("?\n");
 			curln = cursave;
@@ -73,20 +85,11 @@ char	**argv;
 		}
 	}
 	initbuf();
-	exit(0);
+	return(0);
 }
 
-void
-usage()
+static void
+usage(void)
 {
 	fprintf(stderr, "usage: %s [-d] [file]\n", progname);
-}
-
-void
-onintr()
-{
-	(void) signal(SIGINT, onintr);	/* reset for next time */
-	strcpy(errmsg, "Interrupt");
-	printf("\n?\n");
-	longjmp(jumper, 1);		/* return to loop */
 }

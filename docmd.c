@@ -4,13 +4,16 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
 #include "edit.h"
 #include "editdefs.h"
 
-docmd(lin, i, glob)
-char	*lin;
-int	*i, glob;
+static int ckp(char *lin, int *i, int *pflag);
+static int getfn(char *lin, int *i, char *fil);
+
+void
+docmd(char *lin, int *i, int glob)
 {
 	char	fname[MAXSTR], sub[MAXSTR];
 	int	gflag = 0, line3 = 0, pflag = 0, status = ERR;
@@ -125,9 +128,8 @@ int	*i, glob;
 }
 
 /* ckp -- check for 'p' after command */
-ckp(lin, i, pflag)
-char	*lin;
-int	*i, *pflag;
+static int
+ckp(char *lin, int *i, int *pflag)
 {
 	*pflag = 0;
 	++*i;			/* skip over command character */
@@ -142,10 +144,8 @@ int	*i, *pflag;
 }
 
 /* getfn -- get file name from lin[i]... */
-getfn(lin, i, fil)
-char	*lin;
-int	*i;
-char	*fil;
+static int
+getfn(char *lin, int *i, char *fil)
 {
 	int j = 0;
 

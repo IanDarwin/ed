@@ -10,9 +10,7 @@ static void catsub(char *line, int s1, int s2, char *sub, char *new, int *k, int
 static int makesub(char *arg, int from, char delim, char *sub);
 
 int
-subst(sub, gflag, glob)
-char	*sub;
-int	gflag, glob;
+subst(char *sub, int gflag, int glob)
 {
 	char	old[MAXSTR], new[MAXSTR];
 	int j, k, lastm, line, m, stat, done, subbed;
@@ -64,11 +62,7 @@ int	gflag, glob;
 
 /* getrhs -- get right hand side of "s" command */
 int
-getrhs(line, i, sub, gflag)
-char	*line;
-int	*i;
-char	*sub;
-int	*gflag;
+getrhs(char *line, int *i, char *sub, int *gflag)
 {
 	if (line[*i] == '\0' || line[*i+1] == '\0')
 		return ERR;
@@ -86,11 +80,7 @@ int	*gflag;
 
 /* makesub -- make substitution string from arg into sub */
 int
-makesub(arg, from, delim, sub)
-char	*arg;
-int	from;
-char	delim;
-char	*sub;
+makesub(char *arg, int from, char delim, char *sub)
 {
 	int i, j = 0;
 
@@ -110,9 +100,7 @@ char	*sub;
 }
 
 void
-catsub(line, s1, s2, sub, new, k, maxnew)
-char	*line, *sub, *new;
-int s1, s2, *k, maxnew;
+catsub(char *line, int s1, int s2, char *sub, char *new, int *k, int maxnew)
 {
 	int i = 0, j;
 
