@@ -74,7 +74,7 @@ char	*s;
 {
 	char c;
 
-	while (c = (*s++))
+	while ((c = (*s++)) != '\0')
 		if (isascii(c) && isprint(c))
 			putchar(c);
 		else

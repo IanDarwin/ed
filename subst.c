@@ -1,9 +1,15 @@
 /* subst -- substitute "sub" for occurrences of pattern */
 
-#include <stdio.h>
+ #include <stdio.h>
 #include "edit.h"
 #include "editdefs.h"
 
+int getrhs( char *line, int *i, char *sub, int *gflag);
+
+static void catsub(char *line, int s1, int s2, char *sub, char *new, int *k, int maxnew);
+static int makesub(char *arg, int from, char delim, char *sub);
+
+int
 subst(sub, gflag, glob)
 char	*sub;
 int	gflag, glob;
@@ -57,6 +63,7 @@ int	gflag, glob;
 }
 
 /* getrhs -- get right hand side of "s" command */
+int
 getrhs(line, i, sub, gflag)
 char	*line;
 int	*i;
@@ -78,6 +85,7 @@ int	*gflag;
 }
 
 /* makesub -- make substitution string from arg into sub */
+int
 makesub(arg, from, delim, sub)
 char	*arg;
 int	from;
@@ -101,6 +109,7 @@ char	*sub;
 	return i;
 }
 
+void
 catsub(line, s1, s2, sub, new, k, maxnew)
 char	*line, *sub, *new;
 int s1, s2, *k, maxnew;

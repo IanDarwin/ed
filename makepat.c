@@ -14,7 +14,7 @@ char	*patt;
 {
 	int	i = start, j = 0, lastj = 0, lj = 0, done = FALSE;
 
-	while (!done & arg[i] != '\0' && arg[i] != delim) {
+	while (!done && arg[i] != '\0' && arg[i] != delim) {
 		lj = j;
 		if (arg[i] == ANY)
 			(void) addstr(ANY, patt, &j, MAXPAT);

@@ -61,7 +61,7 @@ int n1;
 char *fn;
 {
 	FILE *f;
-	int i, status = OK;
+	int status = OK;
 	char line[MAXSTR];
 	int nch = 0, nli = 0;
 

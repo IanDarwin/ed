@@ -1,6 +1,9 @@
 /* misc -- misc short routines for editor */
 
 #include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+
 #include "edit.h"
 #include "editdefs.h"
 

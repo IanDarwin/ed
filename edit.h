@@ -28,4 +28,6 @@ struct buftype {
 	int	mark;
 };
 
-void putmark(int l, int m);
+char	*gettxt(int n, char *s);
+void	putmark(int l, int m);
+int		subst(char *sub, int gflag, int glob);

@@ -1,7 +1,8 @@
 # Makefile for line editor.
 # $Id$
 
-CC =	gcc
+CFLAGS=-g -Wall
+CC =	gcc $(CFLAGS)
 SHAR =	bundle
 MISC =	README TODO Makefile
 SRCS =	bufprim.c docmd.c editcmds.c esc.c findmisc.c getlist.c \
