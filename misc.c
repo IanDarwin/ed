@@ -93,19 +93,19 @@ int	*i, *cursave;
 edit(filename)
 char	*filename;
 {
-	/* MAKE THIS: int status; */
+	int status;
 
 	if (filename[0] == NULL)
-		return ERR;	/* MAKE THIS: status = ERR; */
-	/* MAKE THIS: else { */
-	initbuf();
-	edsetbuf();
-	if (doread(0, filename) == OK)
-		strcpy(savefile, filename);
-	else
-		savefile[0] = '\0';
-	/* MAKE THIS: } */
-	return OK;		/* MAKE THIS: return status */
+		status = ERR;
+	else {
+		initbuf();
+		edsetbuf();
+		if (doread(0, filename) == OK)
+			strcpy(savefile, filename);
+		else
+			savefile[0] = '\0';
+	}
+	return status;
 }
 
 /* error -- build comprehensive error message, print if non-interactive */
@@ -141,7 +141,7 @@ nextln(n)
 int	n;
 {
 	if (n >= lastln)
-		return 0;	/* MAKE THIS: return 1; */
+		return 1;	/* allow wraparound */
 	else
 		return ++n;
 }
@@ -150,7 +150,7 @@ int	n;
 prevln(n)
 int	n;
 {
-	if (n <=0)	/* MAKE THIS: if (n <= 1) */
+	if (n <= 1)		/* ditto */
 		return lastln;
 	else
 		return --n;
