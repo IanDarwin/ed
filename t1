@@ -1,0 +1,10 @@
+# test that we can read and write files.
+# $Id$
+
+./ed <<!
+0a
+This is the first line.
+.
+.r /etc/group
+w /tmp/id
+!

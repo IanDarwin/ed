@@ -1,0 +1,11 @@
+# Test simple substitutions.
+# $Id$
+
+./ed <<foo
+0a
+This is not swill
+.
+.
+s/not //
+.
+s/is swill/is real swill/p
