@@ -17,8 +17,8 @@ all:		ed
 ed:		$(OBJS)
 		$(CC) $(OBJS) $(LIBS) -o ed
 $(SRCS):	editdefs.h
-editdefs.h:	editvars.h
-		sed 's/^/extern /' editvars.h > editdefs.h
+editvars.h:	editdefs.h
+		sed 's/^extern //' editdefs.h > editvars.h
 rcsdiff:
 		rcsdiff -q RCS/*
 dist:		rcsdiff $(MISC) $(SRCS) $(REALH) $(TESTS)
