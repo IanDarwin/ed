@@ -20,7 +20,7 @@ int	maxset;
 /* ckglob - if global prefix, mark lines to be affected */
 ckglob(l, i)
 char	*l;
-char	*i;
+int	*i;
 {
 	int n, gflag;
 	char temp[BUFSIZ];
