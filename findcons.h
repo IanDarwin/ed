@@ -1,0 +1,11 @@
+#define CLOSURE '{'
+#define EOL '$'
+#define BOL '^'
+#define ANY '?'
+#define CCL '['
+#define LITCHAR '\\'
+#define NEGATE '!'
+#define NCCL 'x'
+#define CCLEND ']'
+#define CLOSIZE 1	/* TODO: check against the book */
+#define DASH '-'

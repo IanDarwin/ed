@@ -1,0 +1,173 @@
+.TH ED 1 local "redistributable"
+.DA 7 April 1984
+.SH NAME
+ed \- a real text editor's text editor
+.SH SYNOPSIS
+.B ed
+[
+file
+]
+.SH FUNCTION
+This editor is a version of the UNIX/Software Tools
+editor written in the C language.
+.SH NOTE
+This is not identical to the standard
+.UX 
+editor;
+it has some limitations and some extentions.
+In particular, there is
+.B no
+disk-based crash recovery as in ex(1), and
+.B no
+undo command as in ed(1).
+.SH REGULAR EXPRESSIONS
+Anyplace the term Regular Expression appears below,
+it refers to a standard 
+.UX -style
+regular expression.
+A detailed description will appear here someday.
+.SH REQUESTS
+The commands and their default line numbers are:
+.TP 1i
+.PD 0
+.IB (.) a
+append text after line (*)
+.TP
+.IB (.) b
+print one buffer (about a screenful)
+.TP
+.IB (.) c
+change text (*)
+.TP
+.IB (.,.) d ( p )
+delete text
+.TP
+.BI "e " file
+start new editing session
+.TP
+.B f
+print name of file
+.TP
+.IB
+(1,$) g [ / re / ] cmd
+perform
+.I cmd
+on all lines in range which match expression
+.IR re .
+.TP
+.B h
+help - print message about previous error
+.TP
+.B j
+NOT IMPLEMENTED
+.TP
+.B k
+NOT IMPLEMENTED
+.TP
+.IB (.,.) l
+print with special characters visible
+.TP
+.IB (.,.) m line3[ p ]
+move
+.I line1
+through
+.I line2
+after
+.IR line3 .
+.TP
+.B n
+NOT IMPLEMENTED
+.TP
+.IB (.,.) p
+print text
+.TP
+.B q
+quits (irrevocably!)
+.TP
+.IB ($) r
+read in a file
+.TP
+.IB (.,.) s/ p1 / p2 / [ g ][ p ]
+substitute
+.I p2
+for
+.I p1
+(\c
+.B g
+means do it for each occurance across the line)
+.TP
+.B t
+NOT IMPLEMENTED
+.TP
+.B u
+NOT IMPLEMENTED
+.TP
+.IB (1,$) v/ re / cmd
+as for
+.BR g ,
+but on lines which do not match.
+.TP
+.IB (1,$) w [ file ]
+write text out to file
+.TP
+.IB (.) = [ p ]
+reset and print current line
+.TP
+.IB (.+1) newline
+prints one line.
+.PD
+.PP
+.IB [ p ]
+\- optional print
+(*) \- new text is typed on subsequent lines,
+end with a line consisting only of
+`.' (dot on a line by itself).
+.SH ENVIRONMENT
+When
+.I ed
+is run interactively,
+the environment variable
+.B EDPS
+controls the EDit Prompt String.
+If it is null or absent,
+there will be no prompting.
+If it is a string,
+it will be used as a prompt.
+.\" SH EXAMPLES
+.\" SH FILES
+.\" SH SEE ALSO
+.\" SH DIAGNOSTICS
+.\" SH HISTORY
+.SH BUGS
+Please don't substitute
+.BR \en 's
+into text.
+The remainder of the line will appear to be a spearate line,
+but will actually be part of the original.
+(To be fixed in `puttxt', I imagine.)
+.PP
+The internal buffer is kept in core;
+it is limited to 1000 lines.
+.B "Woe unto he or she who exceedeth this limit!!"
+You have to write out the buffer frequently,
+since there is no `edit recovery' possible in an in-core version.
+.PP
+It's not as fast as on an 11/780 or a 3033.
+.PP
+move with `p' doesn't print
+(a specific example of the generalization that move sometimes acts weirdly).
+.PP
+a considerable number of illegal constructs is ignored
+(high line numbers get set to $;
+extraneous operands are sometimes ignored).
+.PP
+You must explicitly type most line ranges.
+This is a pain and will be fixed soon.
+In particular,
+you should be able to type `,' as a short form for `1,$p'.
+.PP
+The following are NOT implemented:
+.br
+^ or $ by themselves in regular expressions in find/substitute
+.br
+\en in substitute (can be used on rhs; results not salutory).
