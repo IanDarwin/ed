@@ -1,0 +1,14 @@
+$Id$
+
+This is a minimalist's editor. Keep it that way. Do not turn it into ex,
+or vi, or emacs, all of which already exist!
+
+Write large-memory buffer prims, using linked list instead of array.
+
+Use pointers, not arrays, in buffer structure.
+
+Code cleanup:
+	Report the error if you exceed MAXLINE (or fix bufprim as above).
+	Enforce one-exit-from-function.
+	Use typedefs for status, lineno.
+	cb -sj where needed.
