@@ -75,7 +75,7 @@ char	*s;
 	char c;
 
 	while (c = (*s++))
-		if (c >= ' ')
+		if (isascii(c) && isprint(c))
 			putchar(c);
 		else
 			switch (c) {
