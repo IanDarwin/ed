@@ -4,9 +4,9 @@
 CC =	gcc
 SHAR =	bundle
 MISC =	README TODO Makefile
-SRCS =	bufprim.c ctoi.c docmd.c editcmds.c esc.c findmisc.c getlist.c \
+SRCS =	bufprim.c docmd.c editcmds.c esc.c findmisc.c getlist.c \
 	main.c makepat.c match.c misc.c rewr.c subst.c
-OBJS =	bufprim.o ctoi.o docmd.o editcmds.o esc.o findmisc.o getlist.o \
+OBJS =	bufprim.o docmd.o editcmds.o esc.o findmisc.o getlist.o \
 	main.o makepat.o match.o misc.o rewr.o subst.o
 REALH = edit.h editvars.h findcons.h
 TESTS = t?
