@@ -12,3 +12,9 @@ Code cleanup:
 	Enforce one-exit-from-function.
 	Use typedefs for status, lineno.
 	cb -sj where needed.
+
+Rewr.c:
+	add popens so can use r !date, w !wc -l, etc (I had this in '84).
+	check that file exists before overwriting it!!
+
+More test cases!
