@@ -4,9 +4,9 @@ in the books Software Tools and Software Tools in Pascal.
 
 It contains no AT&T/Weco/USL/Univell/Novell source code.
 
-Geoff Collyer typed it in again in 1994, from some listings dated 1983,
-after the online source it got lost in the sands of time. Geoff also found
-a few bugs and suggested improvements to the decade-old code
+Geoff Collyer typed it in again in 1994, from some listings of mine
+dated 1983, after the online source got lost in the sands of time. Geoff
+also found a few bugs and suggested improvements to the decade-old code
 he started with - Thanks Geoff!
 
 The source is still in flux and needs lotsa work - see TODO.
