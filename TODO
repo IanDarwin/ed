@@ -6,6 +6,9 @@ or vi, or emacs, all of which already exist!
 Consider rewriting in Java and use an ArrayList of Strings
 (first use an Array of Strings, as a migration path).
 
+Whether in Java or in C, consider using a regexp package instead
+of maintaining all this sub-optimal RE code.
+
 Write large-memory buffer prims, using linked list instead of array.
 
 Use pointers, not arrays, in buffer structure.
