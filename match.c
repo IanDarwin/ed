@@ -61,6 +61,7 @@ amatch(char *line, int offset, char *patt, int j)
 }
 
 /* patsize -- return size of pattern entry at patt[n] */
+int
 patsize(char *patt, int n)
 {
 	switch(patt[n]) {
@@ -82,6 +83,7 @@ patsize(char *patt, int n)
 }
 
 /* omatch -- match one pattern element at patt[j], return boolean */
+int
 omatch(char *line, int *i, char *patt, int j)
 {
 	int advance = -1;

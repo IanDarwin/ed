@@ -9,8 +9,6 @@
 #include "edit.h"
 #include "editdefs.h"
 
-static int getone(char *line, int *i, int *num);
-
 int
 getlist(char *line, int *i)
 {
@@ -45,7 +43,7 @@ getlist(char *line, int *i)
 
 /* getone -- get one line number from line */
 /* pass back value in `num'; return status */
-static int
+int
 getone(char *line, int *i, int *num)
 {
 	int	istart, mul, pnum;
@@ -106,6 +104,7 @@ ctoi(char *in, int *i)
  * getnum -- get single line number.
  * pass back value in `num', return status
  */
+int
 getnum(char *line, int *i, int *num)
 {
 	int	status = OK;

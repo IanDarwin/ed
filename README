@@ -2,7 +2,7 @@ This is a simple line editor, similar to UNIX ed(1).
 I wrote this back in the early 1980's based on the editor
 in the books Software Tools and Software Tools in Pascal.
 
-It contains no AT&T/Weco/USL/Univell/Novell source code.
+It contains no AT&T/Weco/USL/Univell/Novell/SCO/Caldera source code.
 
 Geoff Collyer typed it in again in 1994, from some listings of mine
 dated 1983, after the online source got lost in the sands of time. Geoff

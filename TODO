@@ -3,6 +3,9 @@ $Id$
 This is a minimalist's editor. Keep it that way. Do not turn it into ex,
 or vi, or emacs, all of which already exist!
 
+Consider rewriting in Java and use an ArrayList of Strings
+(first use an Array of Strings, as a migration path).
+
 Write large-memory buffer prims, using linked list instead of array.
 
 Use pointers, not arrays, in buffer structure.
@@ -11,7 +14,6 @@ Code cleanup:
 	Report the error if you exceed MAXLINE (or fix bufprim as above).
 	Enforce one-exit-from-function.
 	Use typedefs for status, lineno.
-	cb -sj where needed.
 
 Rewr.c:
 	add popens so can use r !date, w !wc -l, etc (I had this in '84).

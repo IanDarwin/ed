@@ -13,15 +13,7 @@
 
 static jmp_buf jumper;
 
-void
-onintr(int signal)
-{
-	(void) signal(SIGINT, onintr);	/* reset for next time */
-	strcpy(errmsg, "Interrupt");
-	printf("\n?\n");
-	longjmp(jumper, 1);		/* return to loop */
-}
-
+static void onintr(int signal);
 static void usage(void);
 
 int
@@ -92,4 +84,13 @@ static void
 usage(void)
 {
 	fprintf(stderr, "usage: %s [-d] [file]\n", progname);
+}
+
+static void
+onintr(int signal)
+{
+	/* (void) signal(SIGINT, onintr);	/* reset for next time */
+	strcpy(errmsg, "Interrupt");
+	printf("\n?\n");
+	longjmp(jumper, 1);		/* return to loop */
 }

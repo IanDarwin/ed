@@ -12,7 +12,7 @@
 static int ckp(char *lin, int *i, int *pflag);
 static int getfn(char *lin, int *i, char *fil);
 
-void
+int
 docmd(char *lin, int *i, int glob)
 {
 	char	fname[MAXSTR], sub[MAXSTR];

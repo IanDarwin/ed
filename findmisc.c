@@ -5,6 +5,7 @@
 #include "editdefs.h"
 
 /* optpat -- get optional pattern from line[i], incr i */
+int
 optpat(char *l, int *i)
 {
 	if (l[*i] == '\0')
@@ -25,6 +26,7 @@ optpat(char *l, int *i)
 }
 
 /* patscan -- find next occurrence of pattern after line n */
+int
 patscan(char way, int *n)
 {
 	int	done, status;

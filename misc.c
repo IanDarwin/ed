@@ -8,6 +8,7 @@
 #include "editdefs.h"
 
 /* addstr -- put c into outset[j] if it fits, increment j */
+int
 addstr(char c, char *outset, int *j, int maxset)
 {
 	if (*j > maxset)
@@ -18,6 +19,7 @@ addstr(char c, char *outset, int *j, int maxset)
 }
 
 /* ckglob - if global prefix, mark lines to be affected */
+int
 ckglob(char *l, int *i)
 {
 	int n, gflag;
@@ -48,6 +50,7 @@ ckglob(char *l, int *i)
 }
 
 /* deflt -- set defaulted line numbers */
+int
 deflt(int def1, int def2)
 {
 	if (nlines == 0) {
@@ -105,6 +108,7 @@ edit(char *filename)
 }
 
 /* error -- build comprehensive error message, print if non-interactive */
+int
 error(char *s1, char *s2)
 {
 	extern int errno, sys_nerr;
@@ -127,7 +131,7 @@ error(char *s1, char *s2)
 	}
 	if (!interactive)
 		puts(errmsg);
-	/* return ERR so you can say status=error(...) - just shorthand */
+	/* return ERR so you can say return error(...) - just shorthand */
 	return ERR;
 }
 
@@ -144,7 +148,7 @@ esc(char *a, int *i)
 		return a[*i];
 	if (a[*i+1] == '\0')
 		return '\\';	/* not special at end */
-	*i++;
+	i++;
 	if (a[*i] == 'n')
 		return '\n';
 	if (a[*i] == 't')
@@ -153,6 +157,7 @@ esc(char *a, int *i)
 }
 
 /* nextln -- get line after n */
+int
 nextln(int n)
 {
 	if (n >= lastln)
@@ -162,6 +167,7 @@ nextln(int n)
 }
 
 /* prevln -- get line before n */
+int
 prevln(int n)
 {
 	if (n <= 1)		/* ditto */

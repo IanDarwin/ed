@@ -5,6 +5,8 @@
  */
 
 #include <stdio.h>
+#include <ctype.h>
+
 #include "edit.h"
 #include "editdefs.h"
 
@@ -112,8 +114,6 @@ move(int line3)
 int
 lndelete(int n1, int n2)
 {
-	int i;
-
 	if (n1 <= 0)
 		return ERR;
 	;	/* MAKE THIS: for (i = n1, n <= n2; i++) freeline(i); */

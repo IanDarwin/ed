@@ -43,4 +43,6 @@ match.o : match.c /usr/include/stdio.h \
   /usr/include/stdarg.h \
   edit.h findcons.h 
 
+$(SRCS): edit.h editvars.h
+
 # IF YOU PUT ANYTHING HERE IT WILL GO AWAY

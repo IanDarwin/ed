@@ -5,7 +5,10 @@
 #include "edit.h"
 #include "findcons.h"
 
+static int getccl(char *arg, int *i, char *patt, int *j);
+
 /* return ERR or index of closing delimiter */
+int
 makepat(char *arg, int start, char delim, char *patt)
 {
 	int	i = start, j = 0, lastj = 0, lj = 0, done = FALSE;
@@ -64,6 +67,7 @@ getccl(char *arg, int *i, char *patt, int *j)
 }
 
 /* stclose -- store closure into array at patt[j] */
+void
 stclose(char *patt, int *j, int lastj)
 {
 	int jp, jt;
@@ -77,6 +81,7 @@ stclose(char *patt, int *j, int lastj)
 }
 
 /* dodash - expand dash shorthand set at scr[i] into dest[j], stop at dlm */
+void
 dodash(char dlm, char *src, int *i, char *dest, int *j, int maxset)
 {
 	int k;
