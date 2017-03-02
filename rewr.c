@@ -3,6 +3,7 @@
 /* doread -- read file fn after line n1 */
 
 #include <stdio.h>
+#include <string.h>
 #include <assert.h>
 #include "edit.h"
 #include "editdefs.h"

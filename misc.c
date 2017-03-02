@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <errno.h>
 
 #include "edit.h"
 #include "editdefs.h"
@@ -24,7 +25,7 @@ ckglob(char *l, int *i)
 {
 	int n, gflag;
 	char temp[BUFSIZ];
-	int status;
+	int status = 0;
 
 	if (l[*i] != 'g' && l[*i] != 'v')
 		status = ENDDATA;
@@ -92,7 +93,7 @@ doglob(char *s, int *i, int *cursave)
 int
 edit(char *filename)
 {
-	int status;
+	int status = 0;
 
 	if (filename[0] == NULL)
 		status = ERR;
@@ -111,8 +112,7 @@ edit(char *filename)
 int
 error(char *s1, char *s2)
 {
-	extern int errno, sys_nerr;
-	extern char *sys_errlist[], *progname;
+	extern char *progname;
 	int interactive = isatty(fileno(stdin));
 	char mymsg[BUFSIZ];
 
