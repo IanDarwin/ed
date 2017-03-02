@@ -30,19 +30,6 @@ clean:
 # DO NOT DELETE THIS LINE -- mkdep uses it.
 # DO NOT PUT ANYTHING AFTER THIS LINE, IT WILL GO AWAY.
 
-main.o : main.c /usr/include/stdio.h \
-  /usr/include/stdarg.h \
-  /usr/include/signal.h \
-  /usr/include/sys/signal.h \
-  /usr/include/sys/unistd.h /usr/include/setjmp.h \
-  edit.h editvars.h 
-makepat.o : makepat.c /usr/include/stdio.h \
-  /usr/include/stdarg.h \
-  /usr/include/ctype.h edit.h findcons.h 
-match.o : match.c /usr/include/stdio.h \
-  /usr/include/stdarg.h \
-  edit.h findcons.h 
-
 $(SRCS): edit.h editvars.h
 
 # IF YOU PUT ANYTHING HERE IT WILL GO AWAY
