@@ -1,5 +1,7 @@
+= ed!?
+
 This is a simple line editor, similar to UNIX ed(1).
-I wrote this back in the early 1980's based on the editor
+I wrote this back in the early 1980's(!) based on the editor
 in the books Software Tools and Software Tools in Pascal.
 
 It contains no AT&T/Weco/USL/Univell/Novell/SCO/Caldera source code.
@@ -9,7 +11,7 @@ dated 1983, after the online source got lost in the sands of time. Geoff
 also found a few bugs and suggested improvements to the decade-old code
 he started with - Thanks Geoff!
 
-The source is still in flux and needs lotsa work - see TODO.
+The source is still in flux and needs work - see TODO.
+This is not something you would use in production at the present time.
 
 Ian Darwin, Toronto.
-$Id$
