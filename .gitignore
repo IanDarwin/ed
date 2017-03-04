@@ -24,6 +24,7 @@ editvars.h
 *.dylib
 
 # Executables
+ed
 *.exe
 *.out
 *.app
